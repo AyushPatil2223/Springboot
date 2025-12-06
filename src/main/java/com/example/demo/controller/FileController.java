@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.http.*;
+import java.util.List;
 
 
 import com.example.demo.service.FileService;
@@ -58,5 +59,12 @@ public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) {
             return ResponseEntity.status(404).body(null);
         }
     }
+
+
+    @GetMapping("/all")
+public ResponseEntity<List<String>> getAllFiles() {
+    return ResponseEntity.ok(fileService.getAllFiles());
+}
+
 
 }
