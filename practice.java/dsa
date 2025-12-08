@@ -1,0 +1,67 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Scanner;
+public class Sum {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in) ;
+        
+        System.out.println("Write first number");
+        int a = sc.nextInt();
+        System.out.println("Write second number");
+        int b = sc.nextInt();
+        int c = a + b;
+        System.out.println("sum is :" + c);
+    }
+}
+
+
+import java.util.Scanner;
+public class Twosum{
+    public static void main (String[] args){
+        int[] nums = {2,7,11,15};
+        int target = 13;
+        int[] ans = twoSum(nums,target);
+        System.out.println("[" + ans[0] + "," + ans[1] + "]");
+        
+    }
+    public static int[] twoSum(int[] nums, int target){
+        int n = nums.length;
+        
+        for(int i =0; i<n; i++){
+            for(int j =i+1; j<n;j++){
+                if(nums[i]+nums[j] == target){
+                    return new int[]{i,j};
+                    }
+            }
+        }
+        return new int[]{};
+    }
+}
+
+
+
+
+
+
+import java.util.Arrays;
+public class containDuplicate{
+    public static void main(String args[]){
+        int[] nums = {1,2,3,4,1};
+        boolean ans = duplicate(nums);
+        System.out.println(ans);
+    }
+    public static boolean duplicate(int[] nums){
+        Arrays.sort(nums);
+        for(int i = 0; i < nums.length-1 ; i++){
+            if(nums[i] == nums[i+1]){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+
+
+
+
