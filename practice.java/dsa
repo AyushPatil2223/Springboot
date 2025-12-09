@@ -63,5 +63,135 @@ public class containDuplicate{
 
 
 
+import java.util.*;
+
+public class position{
+    public static void main (String args[]){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        
+        int[] arr = new int[n];
+        
+        for(int i = 0 ; i < n; i++){
+            arr[i] = sc.nextInt();
+        }
+        boolean ans = duplicate(arr);
+        System.out.println(ans);
+    }
+    
+    public static boolean duplicate(int[] arr){
+        Arrays.sort(arr);
+        for(int i =0; i<arr.length-1; i++){
+            for(int j=i+1; j<arr.length ; j++){
+                if(arr[i] == arr[j]){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
 
 
+
+
+
+import java.util.*;
+
+public class Position{
+    public static void main(String[] args){
+    
+     Scanner sc = new Scanner(System.in);
+     
+     int n = sc.nextLine();
+     sc.nextLine();
+     
+     
+     String[] num = new String[n];
+     
+     for(int i=0; i<num.length ; i++){
+         num[i] = sc.nextLine();
+     }
+     
+    }
+}
+
+
+
+// class Solution {
+//     public List<List<Integer>> threeSum(int[] nums) {
+//         List<List<Integer>> res = new ArrayList<>();
+//         int n = nums.length;
+
+//         // Sort to help remove duplicates easily
+//         Arrays.sort(nums);
+
+//         for (int i = 0; i < n - 2; i++) {
+//             // Skip duplicate values for i
+//             if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+//             for (int j = i + 1; j < n - 1; j++) {
+//                 // Skip duplicates for j
+//                 if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+
+//                 for (int k = j + 1; k < n; k++) {
+//                     // Skip duplicates for k
+//                     if (k > j + 1 && nums[k] == nums[k - 1]) continue;
+
+//                     int a = nums[i], b = nums[j], c = nums[k];
+
+//                     if (a + b + c == 0) {
+//                         List<Integer> list = new ArrayList<>();
+//                         list.add(a);
+//                         list.add(b);
+//                         list.add(c);
+//                         res.add(list);  // ✅ Only add if the sum is 0
+//                     }
+//                 }
+//             }
+//         }
+
+//         return res;
+//     }
+// }
+
+
+
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(nums); // Step 1: sort the array
+        int n = nums.length;
+
+        for (int i = 0; i < n - 2; i++) {
+            // Skip duplicate i
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+            int left = i + 1;
+            int right = n - 1;
+
+            while (left < right) {
+                int total = nums[i] + nums[left] + nums[right];
+
+                if (total == 0) {
+                    res.add(Arrays.asList(nums[i], nums[left], nums[right]));
+
+                    // Skip duplicate left
+                    while (left < right && nums[left] == nums[left + 1]) left++;
+                    // Skip duplicate right
+                    while (left < right && nums[right] == nums[right - 1]) right--;
+
+                    left++;
+                    right--;
+                } else if (total < 0) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+
+        return res;
+    }
+}
